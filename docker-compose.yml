@@ -1,0 +1,12 @@
+version: "2"
+services:
+ cloud9:
+  image: kdvn/c9
+  restart: always
+  environment:
+    - PORT=3001
+  ports:
+   - 8088:3001
+   - 88:80
+  volumes:
+   - ./:/workspace

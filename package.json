@@ -1,0 +1,19 @@
+{
+  "name": "getdatafrommssql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "dateformat": "^3.0.2",
+    "express": "^4.16.2",
+    "moment-timezone": "^0.5.14",
+    "mongodb": "^2.2.33",
+    "mssql": "^4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

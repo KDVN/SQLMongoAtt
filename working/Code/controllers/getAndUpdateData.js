@@ -64,9 +64,11 @@ module.exports = function (app, db, mssqlatt) {
 	});
 	
 	app.route('/forceupdate').get(function(req, res){
+		console.dir(req.query.filter);
+		res.send(JSON.stringify(req.query.filter));
 		getAndUpdateData(function () {
-			res.send("Updated Is OK");
-		});
+		 	res.send("Updated Is OK");
+		 }, req.query.filter);
 	});
 	
 	app.route('/')

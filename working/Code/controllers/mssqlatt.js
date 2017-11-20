@@ -4,14 +4,16 @@ function MSSQLAtt () {
 
 	this.getData = function (cb, limitData="currentMonth") {
         const sql = require('mssql')
-        
-        var strWhere = `cast(dateadd(day,21,dateadd(day,-day(dateadd(month,-1,getdate())),dateadd(month,-1,getdate()))) as date)
+        if (limitData ==="currentMonth")
+            var strWhere = `cast(dateadd(day,21,dateadd(day,-day(dateadd(month,-1,getdate())),dateadd(month,-1,getdate()))) as date)
                             ,cast(DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,GETDATE())+1,0)) as date)`
-        // var strWhere = "'2017-01-01','2017-12-31'";
+        else
+            var strWhere = limitData;
+        // 	cast(cast(thoigian as time) as smalldatetime) as Gio,
         var sqlCommand = `Select
                                     MaNV,
                 					cast(cast(thoigian as date) as SMALLDATETIME) as Ngay, 
-                					cast(cast(thoigian as time) as smalldatetime) as Gio,
+                					substring(CONVERT(VARCHAR, getdate(), 114),1,5) as Gio,
                 					MayChamCong,
                 					DATENAME(month,
                 									DateAdd( month , case when day(cast(thoigian as date))<=20 then month(cast(thoigian as date)) else month(cast(thoigian as date))+1 end, -1 )

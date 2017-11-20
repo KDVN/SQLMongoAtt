@@ -1,0 +1,13 @@
+version: "2"
+services:
+  updateatt:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        MOUNT_DIR: ./Code
+    environment:
+     - PORT=3000
+    ports:
+     - 89:3000
